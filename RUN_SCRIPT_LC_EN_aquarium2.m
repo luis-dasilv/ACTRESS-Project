@@ -62,14 +62,13 @@ E2=[E5_0 E5_10 E5_20 E5_30 E5_40];
 
 
 %%%%%%PLOTTING BOX WITH PLOTTING_BOX_LC_EN FUNCTION,
-plotting_box_LC_EN(F1,angle,'Submerged Area : 2900mm\textsuperscript{2}','angle (\textsuperscript{o})','Sand Aquarium 2',800)
-plotting_box_LC_EN(F2,angle,'Submerged Area : 3700mm\textsuperscript{2}','angle (\textsuperscript{o})','Sand Aquarium 2',800)
-plotting_box_LC_EN(F0,area,'angle 0\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
-plotting_box_LC_EN(F10,area,'angle 10\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
-plotting_box_LC_EN(F20,area,'angle 20\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
-plotting_box_LC_EN(F30,area,'angle 30\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
-plotting_box_LC_EN(F40,area,'angle 40\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
-
+plotting_box_LC_EN_val(F1,angle,'Submerged Area : 2900mm\textsuperscript{2}','angle (\textsuperscript{o})','Sand Aquarium 2',800)
+plotting_box_LC_EN_val(F2,angle,'Submerged Area : 3700mm\textsuperscript{2}','angle (\textsuperscript{o})','Sand Aquarium 2',800)
+plotting_box_LC_EN_val(F0,area,'angle 0\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
+plotting_box_LC_EN_val(F10,area,'angle 10\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
+plotting_box_LC_EN_val(F20,area,'angle 20\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
+plotting_box_LC_EN_val(F30,area,'angle 30\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
+plotting_box_LC_EN_val(F40,area,'angle 40\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Sand Aquarium 2',800)
 
 %3D PLOT OF MEAN STATIC FORCE FOR ALL CONFIGURATIONS
 figure

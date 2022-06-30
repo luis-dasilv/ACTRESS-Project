@@ -56,6 +56,11 @@ F1=[F1_0 F1_10 F1_20 F1_30 F1_40];
 F2=[F2_0 F2_10 F2_20 F2_30 F2_40];
 F3=[F3_0 F3_10 F3_20 F3_30 F3_40];
 
+F1_p=F1/2500;
+F2_p=F2/3300;
+F3_p=F3/4100;
+
+
 F0 = [F1_0 F2_0 F3_0];
 F10=[F1_10 F2_10 F3_10];
 F20=[F1_20 F2_20 F3_20];
@@ -101,7 +106,7 @@ view(3);
 DATA_GRAVELN1=[angle angle angle; area_2500 area_3300 area_4100;mean(F1) mean(F2) mean(F3)]
 save('DATA_GRAVELN1.mat','DATA_GRAVELN1')
 title("Static Horizontal Anchoring Force on Gravel n\textsuperscript{o}1",Interpreter="latex",FontSize=18)
-xlabel('Angle of anchor (\textsuperscript{o})',Interpreter="latex",FontSize=14) 
+xlabel('Anchor angle (\textsuperscript{o})',Interpreter="latex",FontSize=14) 
 xlim([-5 45])
 ylabel('Sub Area (mm\textsuperscript{2})',Interpreter="latex",FontSize=14)
 zlabel('Mean Force (g)',Interpreter="latex",FontSize=14)
@@ -123,6 +128,47 @@ for i=find(In_out==0)
     scatter3(In_out_axis_x(i),In_out_axis_y(i),0,'go','filled',"SizeData",100)
 end
 
+hold off
+
+
+% 3D PLOT OF MEAN STATIC FORCE FOR ALL CONFIGURATIONS PRESSSSSSSURE
+figure()
+hold on
+stem3(angle,area_2500,mean(F1_p));
+for i=1:size(mean(F1_p),2)
+    text(angle(i),area_2500(i), mean(F1_p(:,i)),num2str(round(mean(F1_p(:,i)*1000),0)/1000),'HorizontalAlignment','center','VerticalAlignment','bottom',Interpreter="latex",FontSize=12);
+end
+stem3(angle,area_3300,mean(F2_p));
+for i=1:size(mean(F2_p),2)
+    text(angle(i),area_3300(i), mean(F2_p(:,i)),num2str(round(mean(F2_p(:,i)*1000),0)/1000),'HorizontalAlignment','center','VerticalAlignment','bottom',Interpreter="latex",FontSize=12);
+end
+stem3(angle,area_4100,mean(F3_p));
+for i=1:size(mean(F2_p),2)
+    text(angle(i),area_4100(i), mean(F3_p(:,i)),num2str(round(mean(F3_p(:,i)*1000),0)/1000),'HorizontalAlignment','center','VerticalAlignment','bottom',Interpreter="latex",FontSize=12);
+end
+view(3);
+DATA_GRAVELN1_P=[angle angle angle; area_2500 area_3300 area_4100;mean(F1_p) mean(F2_p) mean(F3_p)]
+save('DATA_GRAVELN1_p.mat','DATA_GRAVELN1_P')
+title("Static Horizontal Anchoring Pressure on Gravel n\textsuperscript{o}1",Interpreter="latex",FontSize=18)
+xlabel('Anchor angle (\textsuperscript{o})',Interpreter="latex",FontSize=14) 
+xlim([-5 45])
+ylabel('Sub Area (mm\textsuperscript{2})',Interpreter="latex",FontSize=14)
+zlabel('Mean Pressure (gf/mm\textsuperscript{2})',Interpreter="latex",FontSize=14)
+grid on
+
+
+%%%% Clustering plot PRESSSSSSSURE
+;
+
+for i=find(In_out==2)
+    scatter3(In_out_axis_x(i),In_out_axis_y(i),0,'ro','filled',"SizeData",100)
+end
+for i=find(In_out==1)
+    scatter3(In_out_axis_x(i),In_out_axis_y(i),0,'yo','filled',"SizeData",100)
+end
+for i=find(In_out==0)
+    scatter3(In_out_axis_x(i),In_out_axis_y(i),0,'go','filled',"SizeData",100)
+end
 hold off
 
 %%%% EVALUATION OF THE DISTANCE BETWEEN THE STATIC MAXIMA (IN THE FIRST
@@ -152,11 +198,12 @@ end
 
 view(3);
 title("Distance between Static maximum and Dynamic Maximum on Gravel n\textsuperscript{o}1",Interpreter="latex",FontSize=16)
-xlabel('Angle of anchor (,Interpreter="latex")',Interpreter="latex")
+xlabel('Anchor angle (,Interpreter="latex")',Interpreter="latex")
 xlim([-5 45])
 ylabel('Sub Area (mm\textsuperscript{2})',Interpreter="latex")
 zlabel('Mean Distance (mm)',Interpreter="latex")
 grid on
+
 
 
 %%% EVALUATION OF THE DIFFERENCE IN VALUES BETWEEN THE STATIC MAXIMA (IN THE FIRST
@@ -186,7 +233,7 @@ for i=1:size(mean(D3),2)
 end
 view(3)
 title("Difference between Static maximum and Dynamic Maximum on gravel n\textsuperscript{o}1",Interpreter="latex",FontSize=16)
-xlabel('Angle of anchor (\textsuperscript{o})',Interpreter="latex")
+xlabel('Anchor angle (\textsuperscript{o})',Interpreter="latex")
 xlim([-5 45])
 ylabel('Sub Area (mm\textsuperscript{2})',Interpreter="latex")
 zlabel('Mean Difference (g)',Interpreter="latex")
@@ -202,6 +249,13 @@ dif_per_area(2,:) = (F(3,:)-F(2,:))./F(2,:).*100
 
 mean(dif_per_area,2)
 
+
+F_p=[mean(F1_p)' mean(F2_p)' mean(F3_p)'] 
+dif_per_area_p(:,1) = (F_p(:,2)-F_p(:,1))./F_p(:,1).*100;
+dif_per_area_p(:,2) = (F_p(:,3)-F_p(:,2))./F_p(:,2).*100;
+
+mean(dif_per_area_p,1)
+
 dif_per_angle(:,1) = (F(:,2)-F(:,1))./F(:,1).*100;
 dif_per_angle(:,2) = (F(:,3)-F(:,2))./F(:,2).*100;
 dif_per_angle(:,3) = (F(:,4)-F(:,3))./F(:,3).*100;
@@ -212,6 +266,10 @@ mean(dif_per_angle)
 %%% Variances analysis
 mean([std(F1) std(F2) std(F3)])
 fprintf('Standard deivation is %0.2f \n', mean([std(F1) std(F2) std(F3)]))
+
+F_p
+mean(F_p,1)
+S = std(F_p,0,1)
 
 
 

@@ -35,8 +35,11 @@ angle=[0 10 20 30 40];
 area=[ 2900 3700 ];
 area_2900=[2900 2900 2900 2900 2900];
 area_3700=[3700 3700 3700 3700 3700];
-
-
+angle0=[0 0 0 0 0];
+angle10=[10 10 10 10 10];
+angle20=[20 20 20 20 20];
+angle30=[30 30 30 30 30];
+angle40=[40 40 40 40 40];
 %%%Too big variables
 
 
@@ -44,11 +47,11 @@ area_3700=[3700 3700 3700 3700 3700];
 F29=[F5_0 F5_10 F5_20 F5_30 F5_40];
 F37=[F6_0 F6_10 F6_20 F6_30 F6_40];
 
-F0 = [F5_0  F6_0 ];
-F10= [F5_10 F6_10  ];
-F20= [F5_20 F6_20  ];
-F30= [F5_30 F6_30  ];
-F40= [F5_40 F6_40  ];
+F0 = [F5_0  F6_0];
+F10= [F5_10 F6_10];
+F20= [F5_20 F6_20];
+F30= [F5_30 F6_30];
+F40= [F5_40 F6_40];
  
 %%%%%Distance from stat Maxima and Dyn maxima, not discussed in report
 D1=[D6_0 D6_10 D6_20 D6_30 D6_40];
@@ -58,16 +61,16 @@ D2=[D5_0 D5_10 D5_20 D5_30 D5_40];
 %%%%%Difference in values from stat Maxima and Dyn maxima, not discussed in report
 E1=[E6_0 E6_10 E6_20 E6_30 E6_40];
 E2=[E5_0 E5_10 E5_20 E5_30 E5_40];
-
+    
 
 %%%%%%PLOTTING BOX WITH PLOTTING_BOX_LC_EN FUNCTION,
-plotting_box_LC_EN(F29,angle,'Submerged Area : 2900mm\textsuperscript{2}','angle (\textsuperscript{o})','Aquarium Sand 1',1000)
-plotting_box_LC_EN(F37,angle,'Submerged Area : 3700mm\textsuperscript{2}','angle (\textsuperscript{o})','Aquarium Sand 1',1000)
-plotting_box_LC_EN(F0,area,'angle 0\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
-plotting_box_LC_EN(F10,area,'angle 10\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
-plotting_box_LC_EN(F20,area,'angle 20\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
-plotting_box_LC_EN(F30,area,'angle 30\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
-plotting_box_LC_EN(F40,area,'angle 40\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
+plotting_box_LC_EN_val(F29,angle,2900,'Submerged Area : 2900mm\textsuperscript{2}','angle (\textsuperscript{o})','Aquarium Sand 1',1000)
+plotting_box_LC_EN_val(F37,angle,3700,'Submerged Area : 3700mm\textsuperscript{2}','angle (\textsuperscript{o})','Aquarium Sand 1',1000)
+plotting_box_LC_EN_val(F0,area,0,'angle 0\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
+plotting_box_LC_EN_val(F10,area,10,'angle 10\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
+plotting_box_LC_EN_val(F20,area,20,'angle 20\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
+plotting_box_LC_EN_val(F30,area,30,'angle 30\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
+plotting_box_LC_EN_val(F40,area,40,'angle 40\textsuperscript{o}', 'Submerged Area (mm\textsuperscript{2})','Aquarium Sand 1',1000)
 
 % 3D PLOT OF MEAN STATIC FORCE FOR ALL CONFIGURATIONS
 figure
@@ -173,7 +176,6 @@ grid on
 
 %%% Variances analysis
 fprintf('Standard deivation is %0.2f \n', mean([std(F29) std(F37) ]))
-
 
 
 

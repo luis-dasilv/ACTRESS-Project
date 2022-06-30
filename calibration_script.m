@@ -1,4 +1,4 @@
-%%%%%%%%%%% CALIBRATION 
+%%%%%%%%%%% CALIBRATION ENCODER 
 clc; close all; clear all;
 data_pure=readmatrix('data/LC-value-enc.csv');
 data=replace_nan(data_pure);

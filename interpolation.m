@@ -1,3 +1,5 @@
+%%% Script used for own investigation, not presented in the report. 
+
 clc ;close all;clear all;
 
 %%% DATAS FROM LITERATURE
